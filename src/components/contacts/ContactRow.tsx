@@ -3,17 +3,21 @@ import { ContactMessage } from '@/src/types/contact';
 
 interface ContactRowProps {
   message: ContactMessage;
+  onClick: (message: ContactMessage) => void;
 }
 
-const ContactRow: React.FC<ContactRowProps> = ({ message }) => {
+const ContactRow: React.FC<ContactRowProps> = ({ message, onClick }) => {
   const initials = message.senderName
     .split(' ')
     .map((n) => n[0])
     .join('');
 
   return (
-    <tr className="border-b border-white/5 hover:bg-white/[0.02] transition-colors group">
-      <td className="py-5 px-6">
+    <tr 
+      onClick={() => onClick(message)}
+      className="border-b border-white/5 hover:bg-white/[0.02] transition-colors group cursor-pointer"
+    >
+      <td className="py-5 px-6" onClick={(e) => e.stopPropagation()}>
         <input type="checkbox" className="w-4 h-4 rounded border-white/10 bg-[#1a1c1e] text-purple-600 focus:ring-purple-500/20" />
       </td>
       <td className="py-5 px-6">

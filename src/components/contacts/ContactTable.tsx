@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import ContactRow from './ContactRow';
 import { ContactMessage } from '@/src/types/contact';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import ContactDetailsModal from './ContactDetailsModal';
 
 interface ContactTableProps {
   messages: ContactMessage[];
@@ -11,6 +12,8 @@ interface ContactTableProps {
 
 const ContactTable: React.FC<ContactTableProps> = ({ messages }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedMessage, setSelectedMessage] = useState<ContactMessage | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const itemsPerPage = 6;
 
   const totalItems = messages.length;
@@ -20,6 +23,11 @@ const ContactTable: React.FC<ContactTableProps> = ({ messages }) => {
   const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
   
   const currentItems = messages.slice(startIndex, startIndex + itemsPerPage);
+
+  const handleRowClick = (message: ContactMessage) => {
+    setSelectedMessage(message);
+    setIsModalOpen(true);
+  };
 
   return (
     <div className="bg-[#111111] border border-white/5 rounded-2xl overflow-hidden shadow-2xl">
@@ -39,7 +47,11 @@ const ContactTable: React.FC<ContactTableProps> = ({ messages }) => {
           </thead>
           <tbody>
             {currentItems.map((msg) => (
-              <ContactRow key={msg.id} message={msg} />
+              <ContactRow 
+                key={msg.id} 
+                message={msg} 
+                onClick={handleRowClick}
+              />
             ))}
           </tbody>
         </table>
@@ -77,6 +89,13 @@ const ContactTable: React.FC<ContactTableProps> = ({ messages }) => {
           </button>
         </div>
       </div>
+
+      {/* Contact Details Modal */}
+      <ContactDetailsModal 
+        message={selectedMessage}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 };

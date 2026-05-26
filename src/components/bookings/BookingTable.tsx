@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import BookingRow from './BookingRow';
 import { Booking } from '@/src/types/booking';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import BookingDetailsModal from './BookingDetailsModal';
 
 interface BookingTableProps {
   bookings: Booking[];
@@ -9,6 +10,8 @@ interface BookingTableProps {
 
 const BookingTable: React.FC<BookingTableProps> = ({ bookings }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const itemsPerPage = 6;
 
   // Calculate pagination values
@@ -28,6 +31,11 @@ const BookingTable: React.FC<BookingTableProps> = ({ bookings }) => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
 
+  const handleRowClick = (booking: Booking) => {
+    setSelectedBooking(booking);
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="bg-[#111111] border border-white/5 rounded-2xl overflow-hidden">
       <div className="overflow-x-auto">
@@ -43,7 +51,11 @@ const BookingTable: React.FC<BookingTableProps> = ({ bookings }) => {
           </thead>
           <tbody>
             {currentItems.map((booking) => (
-              <BookingRow key={booking.id} booking={booking} />
+              <BookingRow 
+                key={booking.id} 
+                booking={booking} 
+                onClick={handleRowClick}
+              />
             ))}
           </tbody>
         </table>
@@ -81,6 +93,13 @@ const BookingTable: React.FC<BookingTableProps> = ({ bookings }) => {
           </button>
         </div>
       </div>
+
+      {/* Booking Details Modal */}
+      <BookingDetailsModal 
+        booking={selectedBooking}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 };

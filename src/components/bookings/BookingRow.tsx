@@ -3,16 +3,20 @@ import { Booking } from '@/src/types/booking';
 
 interface BookingRowProps {
   booking: Booking;
+  onClick: (booking: Booking) => void;
 }
 
-const BookingRow: React.FC<BookingRowProps> = ({ booking }) => {
+const BookingRow: React.FC<BookingRowProps> = ({ booking, onClick }) => {
   const initials = booking.name
     .split(' ')
     .map((n) => n[0])
     .join('');
 
   return (
-    <tr className="border-b border-white/5 hover:bg-white/[0.02] transition-colors group">
+    <tr 
+      onClick={() => onClick(booking)}
+      className="border-b border-white/5 hover:bg-white/[0.02] transition-colors group cursor-pointer"
+    >
       <td className="py-5 px-4">
         <div className="flex items-center gap-3">
           <div className={`w-10 h-10 rounded-full flex items-center justify-center text-[10px] font-bold text-gray-300 border border-white/10 ${booking.avatarColor}`}>
