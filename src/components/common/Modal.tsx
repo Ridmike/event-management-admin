@@ -41,7 +41,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
             transition={{ type: 'spring', duration: 0.5, bounce: 0.3 }}
             className="relative w-full max-w-2xl bg-[#111111] border border-white/10 rounded-3xl shadow-2xl overflow-hidden"
           >
-            <div className="flex items-center justify-between p-6 border-b border-white/5 bg-white/[0.02]">
+            <div className="flex items-center justify-between p-6 border-b border-white/5 bg-white/2">
               <h3 className="text-xl font-bold text-white tracking-tight">{title}</h3>
               <button
                 onClick={onClose}

@@ -41,7 +41,7 @@ const BookingTable: React.FC<BookingTableProps> = ({ bookings }) => {
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-white/5 bg-white/[0.02]">
+            <tr className="border-b border-white/5 bg-white/2">
               <th className="py-4 px-6 text-[10px] font-bold text-gray-500 uppercase tracking-widest">Name</th>
               <th className="py-4 px-6 text-[10px] font-bold text-gray-500 uppercase tracking-widest">Email</th>
               <th className="py-4 px-6 text-[10px] font-bold text-gray-500 uppercase tracking-widest">Phone</th>

@@ -20,7 +20,7 @@ const ContactDetailsModal: React.FC<ContactDetailsModalProps> = ({ message, isOp
     .join('');
 
   const InfoCard = ({ icon: Icon, label, value }: { icon: any, label: string, value: string }) => (
-    <div className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/5">
+    <div className="flex items-center gap-3 p-3 rounded-xl bg-white/2 border border-white/5">
       <div className="p-2 rounded-lg bg-white/5">
         <Icon className="w-4 h-4 text-purple-400" />
       </div>
@@ -35,7 +35,7 @@ const ContactDetailsModal: React.FC<ContactDetailsModalProps> = ({ message, isOp
     <Modal isOpen={isOpen} onClose={onClose} title="Contact Message Details">
       <div className="space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 rounded-2xl bg-gradient-to-br from-purple-500/10 to-transparent border border-purple-500/10">
+        <div className="flex items-center justify-between p-4 rounded-2xl bg-linear-to-br from-purple-500/10 to-transparent border border-purple-500/10">
           <div className="flex items-center gap-4">
             <div className={`w-14 h-14 rounded-xl flex items-center justify-center text-xl font-bold text-white border border-white/10 ${message.avatarColor} shadow-lg`}>
               {initials}
@@ -66,7 +66,7 @@ const ContactDetailsModal: React.FC<ContactDetailsModalProps> = ({ message, isOp
             <MessageSquare className="w-4 h-4" />
             <span className="text-[10px] font-bold uppercase tracking-widest">Message Thread</span>
           </div>
-          <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/5 space-y-4">
+          <div className="p-5 rounded-2xl bg-white/3 border border-white/5 space-y-4">
             <div>
                 <p className="text-[10px] font-bold text-gray-600 uppercase mb-1">Subject</p>
                 <h4 className="text-sm font-bold text-white">{message.subject}</h4>

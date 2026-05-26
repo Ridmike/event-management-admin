@@ -20,7 +20,7 @@ const BookingDetailsModal: React.FC<BookingDetailsModalProps> = ({ booking, isOp
     .join('');
 
   const DetailItem = ({ icon: Icon, label, value, colorClass = "text-white" }: { icon: any, label: string, value: string, colorClass?: string }) => (
-    <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+    <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/2 border border-white/5">
       <div className="mt-1 p-2 rounded-lg bg-white/5">
         <Icon className="w-4 h-4 text-purple-400" />
       </div>
@@ -63,7 +63,7 @@ const BookingDetailsModal: React.FC<BookingDetailsModalProps> = ({ booking, isOp
         </div>
 
         {/* Message Section */}
-        <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 space-y-3">
+        <div className="p-6 rounded-2xl bg-white/3 border border-white/5 space-y-3">
           <div className="flex items-center gap-2 text-purple-400">
             <MessageSquare className="w-4 h-4" />
             <span className="text-[10px] font-bold uppercase tracking-widest">Message from Client</span>

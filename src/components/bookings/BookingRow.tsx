@@ -15,7 +15,7 @@ const BookingRow: React.FC<BookingRowProps> = ({ booking, onClick }) => {
   return (
     <tr 
       onClick={() => onClick(booking)}
-      className="border-b border-white/5 hover:bg-white/[0.02] transition-colors group cursor-pointer"
+      className="border-b border-white/5 hover:bg-white/2 transition-colors group cursor-pointer"
     >
       <td className="py-5 px-4">
         <div className="flex items-center gap-3">
